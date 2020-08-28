@@ -43,7 +43,7 @@ PYTHON3 = sys.version_info.major == 3
 #Globals:
 DELIM = b"<IDS|MSG>"
 
-debug_level = 3 # 0 (none) to 3 (all) for various levels of detail
+debug_level = 0 # 0 (none) to 3 (all) for various levels of detail
 exiting = False
 engine_id = str(uuid.uuid4())
 
@@ -178,13 +178,13 @@ def shell_handler(msg):
         #######################################################################
         content = {
             'name': "stdout",
-            'text': "hello, world",
+            'text': "",
         }
         send(iopub_stream, 'stream', content, parent_header=msg['header'])
         #######################################################################
         content = {
             'execution_count': execution_count,
-            'data': {"text/plain": "result!"},
+            'data': {"text/plain": ""},
             'metadata': {}
         }
         send(iopub_stream, 'execute_result', content, parent_header=msg['header'])
